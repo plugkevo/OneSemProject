@@ -1,7 +1,5 @@
 
 <?php 
-session_start();
-
     
 include('connection.php');
 // $connect = mysqli_connect("localhost", "root", "", "kevann");
@@ -131,7 +129,12 @@ include('connection.php');
 					<tr>
 						<td colspan="3" align="right">Total</td>
 						<td align="right">$ <?php echo number_format($total, 2); ?></td>
-						<td></td>
+						<td>
+        					<form method="POST" action="checkout.php">
+            					<input type="hidden" name="total_amount" value="<?php echo $total; ?>">
+            					<Button type="submit" class="btn btn-primary">Checkout</Button>
+        					</form>
+    					</td>
 					</tr>
 					<?php
 					}

@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,6 +43,13 @@
         border-radius: 4px;
         resize: vertical;
       }
+      input[type=email], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+      }
 
       label {
         padding: 12px 12px 12px 0;
@@ -60,8 +70,9 @@
         border-radius: 10px;
         background-color: #f2f2f2;
         padding: 50px;
-        height: 400px;
+        height: 500px;
         overflow: auto;
+        margin-top: 90px;
       
       }
       
@@ -78,22 +89,30 @@
             <h3><div class="title">Contact us!</div></h3>
             <br>
             <div class="title-info">We'll get back to you soon!</div>
+            <?php if (isset($_GET['status'])): ?>
+                <div class="alert alert-<?php echo ($_GET['status'] == 'success') ? 'success' : 'danger'; ?>">
+                    <?php 
+                        echo ($_GET['status'] == 'success') ? 'Email sent successfully!' : 'Failed to send email. Please try again.';
+                    ?>
+                </div>
+            <?php endif; ?>
         
-            <form action="" method="" class="form">
+        
+            <form action="send_email.php" method="POST" class="form">
                 <div class="input-group">
                     <label for="first-name">First name</label>
-                    <input type="text" name="first_name" id="first-name" placeholder="First name">
+                    <input type="text" name="fullName" id="full-name" placeholder="Full name">
                 </div>
                 
                 <div class="input-group">
-                    <label for="last-name">Last name</label>
-                    <input type="text" name="last_name" id="last-name" placeholder="Last Name">
+                    <label for="last-name">Subject</label>
+                    <input type="text" name="subject" id="subject" placeholder="Subject">
                    
                 </div>
 
                 <div class="input-group">
                     <label for="e-mail">e-mail</label>
-                    <input type="text" name="e-mail" id="e-mail" placeholder="e-mail">
+                    <input type="email" name="email" id="e-mail" placeholder="e-mail">
                     
                 </div>
 
@@ -101,13 +120,20 @@
                     <label for="message">Message</label>
                     <textarea name="message" id="message" rows="5" placeholder="Please share with us you're feedback..."></textarea>
                 </div>
-
+                <div class="input-group">
+                    <p>
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I accept the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.</label>
+                    </p
+                </div>
                 <div class="button-div">
-                    <button type="submit">Send</button>
+                    <button class="btn btn-primary" type="submit">Send</button>
                 </div>
         </div>
-        </form>
+            </form>
     </main>
+
+    
 
 
 </body>
