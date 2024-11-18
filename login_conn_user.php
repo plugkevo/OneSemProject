@@ -2,12 +2,6 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['username']) || !isset($_SESSION['expire_time']) || time() >= $_SESSION['expire_time']) {
-	// User is not logged in or session has expired, redirect to login page
-	header("Location: index.php"); // Change to your login page
-	exit();
-  }
-
 
 if(isset ($_POST['submit'])) {
     // Get the username and password from the form
@@ -20,7 +14,7 @@ if(isset ($_POST['submit'])) {
   
     if ($result->num_rows == 1) {
       $_SESSION['username'] = $username;
-      $_SESSION['expire_time'] = time() + (120); // Set session expiration time to 20 minutes from now
+      $_SESSION['expire_time'] = time() + (5 * 60); // Set session expiration time to 20 minutes from now
 
       // The username and password are correct, so log the user in
     

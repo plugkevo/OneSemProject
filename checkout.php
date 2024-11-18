@@ -1,17 +1,22 @@
 <?php
-include('express-stk.php');
+session_start();
+  if (isset($_SESSION['username']) && isset($_SESSION['expire_time']) && time() < $_SESSION['expire_time'] ) {
+    // User is already logged in, redirect to the new page 
+    
+  }
+  else{
+	header("Location: login.php");
+	exit();
+  }
 
+include('express-stk.php');
 
 
 if (isset($_POST['total_amount'])) {
     $total_amount = $_POST['total_amount'];
     // Proceed with checkout logic
 
-    
 }
-
-
-  
 
 
 ?>
