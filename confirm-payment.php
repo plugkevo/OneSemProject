@@ -4,6 +4,7 @@ session_start();
 // Initialize variables
 $orderNo = '';
 $message = '';
+$phone_number = ''; // Initialize phone_number variable
 
 // Check if the order number is set in the session
 if (isset($_SESSION["orderNo"])) {
@@ -29,6 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["confirm_Payment"])) {
     // Check if the order ID exists
     if ($result->num_rows > 0) {
         // Order ID exists
+        $order = $result->fetch_assoc(); // Fetch the first row as an associative array
+        $phone_number = $order['Phone']; // Ensure this matches your database column name
+        
         $message = "<h1>Payment Confirmed</h1>";
         $message .= "<p>Your order ID is: <strong>" . htmlspecialchars($orderNo) . "</strong></p>";
     } else {
@@ -39,6 +43,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["confirm_Payment"])) {
 
     // Close the statement
     $stmt->close();
+
+    // Send SMS logic
+    require_once 'sms.php';
+    $livesms = new SMS();
+    @$phone = $phone_number;
+    @$text = "Your Payment has been received and your goods are ready for collection";
+    @$result = $livesms->send($phone, $text);
+    
+    // Handle SMS sending result
+    if (@$result['success'] && !empty($result['message'])) {
+        echo '<div class="alert alert-primary" role="alert">' . @$result['message'] . '</div>';
+    } elseif (!@$result['success'] && !empty($result['message'])) {
+        echo '<div class="alert alert-danger" role="alert">' . @$result['message'] . '</div>';
+    }
 }
 
 // Close the database connection
@@ -53,7 +71,7 @@ $conn->close();
     <title>African Shipping</title>
 </head>
 <style>
-    .container{
+    .container {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -61,12 +79,13 @@ $conn->close();
     }
 </style>
 <body>
-    <?php include('navbar.html')?>
+    <?php include('navbar.html');?>
+   
     
     <div class="container">
         <div class="content">
             <h1>Confirm Payment</h1>
-            <p>Once you have received the mpesa message, click on Confirm Payment to proceed</p>
+            <p>Once you have received the M-PESA message, click on Confirm Payment to proceed</p>
 
             <!-- Form for confirming payment -->
             <form method="post" action="">
@@ -79,7 +98,7 @@ $conn->close();
                 echo $message;
                 // Display the button to return to the home page
                 echo '<form action="home.php" method="get">';
-                echo '<button class="btn btn-success "type="submit">Go Back to Home</button>';
+                echo '<button class="btn btn-success" type="submit">Go Back to Home</button>';
                 echo '</form>';
             }
             ?>

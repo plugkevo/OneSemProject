@@ -5,9 +5,10 @@ session_start();
     
   }
   else{
-	header("Location: login.php");
+	header("Location: index.php");
 	exit();
   }
+
 
 include('express-stk.php');
 
@@ -51,6 +52,8 @@ if (isset($_POST['total_amount'])) {
                 <label for="phone_number">Phone number</label>
                 <input type="number" name="phone_number" class="form-control" placeholder="0700000000" maxlength="10" required>
                 <input type="number" name= "totalAmount" hidden value="<?php echo $total_amount;?>">
+                
+
                 <br>
                 <button class="btn btn-primary float-right"  type="submit" <i class="ion-locked"></i>Confirm and Pay</button>
 
