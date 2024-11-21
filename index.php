@@ -81,7 +81,7 @@
     <br>
         <button class="button"   type="submit"  name="submit"> <b>Login</b> </button  >
     <br>
-    <p>Don't have an account?</p><a href="sign_up.php">SIGN UP</a>
+    <p>Don't have an account?</p><b><a href="sign_up.php" style="color: white; text-decoration: none;">SIGN UP</a></b>
 
        
     

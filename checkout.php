@@ -42,11 +42,11 @@ if (isset($_POST['total_amount'])) {
     <div class="container">
         <div class="content">
             <h1>Checkout</h1>
-            <h1><?php  echo $total_amount;?></h1>
+            <h3>Amount:<?php  echo $total_amount;?></h3>
             
             <img src="images/download.png" height="80px" alt="">
             <p>1. Enter the phone number and press <b>Confirm & Pay</b> </p>
-            <p>2. You will recieve a pop up on you phone. Enter you M-PESA pin</p>
+            <p>2. You will recieve a pop up on your phone. Enter you M-PESA pin</p>
 
             <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
                 <label for="phone_number">Phone number</label>

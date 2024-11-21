@@ -71,11 +71,11 @@ else{
 <body>
     <!-- navigation bar  starts here -->
     <nav class="navbar navbar-expand-lg bg-light fixed-top shadow">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="home.php">
             <!--the image -->
             <img src="images/WhatsApp Image 2023-05-21 at 14.53.12.jpeg" class="rounded-circle" alt="" width="40" height="40">
         </a>
-        <a href="index.html" class="navbar-brand"> <i>AFRICAN SHIPPING</i></a>
+        <a href="home.php" class="navbar-brand"> <i>AFRICAN SHIPPING</i></a>
         <!-- hamburger icon -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbardisplaynavigations" aria-controls="navbardisplaynavigations" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -88,11 +88,10 @@ else{
                 <li><a href="contact_us.php"  class="nav-link"  style="font-size: 20px;">contact Us</a></li>
                 <li><a href="#"  class="nav-link"style="font-size: 20px;">More</a>
                   <ul class="submenu">
-                    <li><a href="#" class="nav-link">Mission</a></li>
-                    <li><a href="#" class="nav-link">Vision</a></li>
-                    
-                    <li><a href="#" class="nav-link">About Us</a></li>
-                    <li><a href="admin_home.php" class="nav-link">Admin Panel</a></li>
+                    <li><a href="mission.php" class="nav-link">Mission</a></li>
+                    <li><a href="vision.php" class="nav-link">Vision</a></li>
+                    <li><a href="aboutus.php" class="nav-link">About Us</a></li>
+                    <li><a href="admin_login.php" class="nav-link">Admin Panel</a></li>
                   </ul>
                 </li>                     
             </ul>           
@@ -106,10 +105,13 @@ else{
     <div class="row">
       
       <div class="service">
-              <h2>Customer Delivery</h2>
-              <p>We deliver and transport goods for our customers even when they order their goods through the online mode. The delivery 
-                process is typically managed by our company which picks up the package from the retailer and transports it to the customer's address.</p>
-                <a href="goods.php">SHIP NOW</a>
+          <a href="goods.php" style="color:black; text-decoration:none;">
+            <h2>Customer Delivery</h2>
+            <p>We deliver and transport goods for our customers even when they order their goods through the online mode. The delivery 
+              process is typically managed by our company which picks up the package from the retailer and transports it to the customer's address.
+            </p>
+          </a>
+
       </div>
       <div class="service">
               <h2>Means Of Transport</h2>

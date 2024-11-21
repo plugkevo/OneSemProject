@@ -102,6 +102,7 @@ if (isset($_POST['delete_coordinates_btn'])) {
     <form action="update_coordinates.php" method="POST">
         <div class="main">
         <a href="admin_home.php" style="color: black; text-decoration: none;"><i class="fas fa-backward fa-2x"></i></a>
+        <h1 style="text-align: center;">Update Coordinates</h1>
             <div class="row">
                 <div class="col-lg-6 mb-3">
                     <label for="shipName" class="label">Ship Name</label>
