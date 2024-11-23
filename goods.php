@@ -1,16 +1,13 @@
 
 <?php 
-
 session_start();
-  if (isset($_SESSION['username']) && isset($_SESSION['expire_time']) && time() < $_SESSION['expire_time'] ) {
-    // User is already logged in, redirect to the new page
-    
-    
-  }
-  else{
-	header("Location: index.php");
-	exit();
-  }
+if (isset($_SESSION['username']) && isset($_SESSION['expire_time']) && time() < $_SESSION['expire_time']) {
+  // User is already logged in, you can store the username in a variable
+  $userName = $_SESSION['username'];
+} else {
+  header("Location: login.php");
+  exit(); // Make sure to exit after the redirect
+}
     
 include('connection.php');
 // $connect = mysqli_connect("localhost", "root", "", "kevann");
@@ -31,6 +28,9 @@ include('connection.php');
 
 </head>
 <style>
+	.container{
+		margin-top: 50px;
+	}
 	table td{
 		padding-left: 10px;
   		padding-right: 10px;
@@ -42,11 +42,15 @@ include('connection.php');
 
 
 <!-- main starts here -->
-<div class="container">
+	<div class="container">
 			<br />
 			<br />
+		<div class="wrapper">
+        	<h2 style="text-align: center;">Welcome, <?php echo htmlspecialchars($userName); ?>!</h2>
+            <p style="text-align: center;">You are logged in. Your session will expire in <?php echo ($_SESSION['expire_time'] - time()) / 60; ?> minutes.</p>
+        </div>
 			<br />
-			<h3 align="center"><U>SHIP WITH US</U></h3><br />
+			<h3 style="text-align:center;"><U>SHIP WITH US</U></h3><br />
 			<br /><br />
 			<?php
 				$query = "SELECT * FROM cart_goods ORDER BY id ASC";

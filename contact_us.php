@@ -1,6 +1,4 @@
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,7 +90,7 @@
             <?php if (isset($_GET['status'])): ?>
                 <div class="alert alert-<?php echo ($_GET['status'] == 'success') ? 'success' : 'danger'; ?>">
                     <?php 
-                        echo ($_GET['status'] == 'success') ? 'Email sent successfully!' : 'Failed to send email. Please try again.';
+                        echo ($_GET['status'] == 'success') ? 'Message sent successfully!' : 'Failed to send message. Please try again.';
                     ?>
                 </div>
             <?php endif; ?>
@@ -101,12 +99,17 @@
             <form action="send_email.php" method="POST" class="form">
                 <div class="input-group">
                     <label for="first-name">First name</label>
-                    <input type="text" name="fullName" id="full-name" placeholder="Full name">
+                    <input type="text" name="fullname" id="full-name" placeholder="Full name">
                 </div>
                 
                 <div class="input-group">
                     <label for="last-name">Subject</label>
                     <input type="text" name="subject" id="subject" placeholder="Subject">
+                   
+                </div>
+                <div class="input-group">
+                    <label for="last-name">Phone Number</label>
+                    <input type="text" name="phoneNo" id="subject" placeholder="+2547......">
                    
                 </div>
 
@@ -123,11 +126,11 @@
                 <div class="input-group">
                     <p>
                         <input type="checkbox" id="terms" name="terms" required>
-                        <label for="terms">I accept the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.</label>
+                        <label for="terms">I accept the <a href="terms.php">Terms of Service</a> and <a href="privacy.php">Privacy Policy</a>.</label>
                     </p
                 </div>
                 <div class="button-div">
-                    <button class="btn btn-primary" type="submit">Send</button>
+                    <button class="btn btn-primary" name="submit" type="submit">Send</button>
                 </div>
         </div>
             </form>

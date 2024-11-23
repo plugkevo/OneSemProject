@@ -41,5 +41,23 @@ try {
     // Exception occurred
     header("Location: contact_us.php?status=error&message=" . urlencode($e->getMessage()));
 }
+
+include('connection.php');
+
+    // Fetch items
+    $fullname = $_POST['fullname'];
+    $subject = $_POST['subject'];
+    $phoneNo = $_POST['phoneNo'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+
+    $insertdata = mysqli_query($conn, "INSERT INTO contact_us (fullname, subject, phoneNo, email, message) VALUES ('$fullname', '$subject', '$phoneNo', '$email','$message')");
+
+    if ($insertdata) {
+        $response = "Data submitted successfully";
+    } else {
+        $error = "Not submitted";
+    }
+
 exit; // Make sure to exit after the redirect
 ?>

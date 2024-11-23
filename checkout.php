@@ -1,14 +1,12 @@
 <?php
 session_start();
-  if (isset($_SESSION['username']) && isset($_SESSION['expire_time']) && time() < $_SESSION['expire_time'] ) {
-    // User is already logged in, redirect to the new page 
-    
-  }
-  else{
-	header("Location: index.php");
-	exit();
-  }
-
+if (isset($_SESSION['username']) && isset($_SESSION['expire_time']) && time() < $_SESSION['expire_time']) {
+  // User is already logged in, you can store the username in a variable
+  $userName = $_SESSION['username'];
+} else {
+  header("Location: login.php");
+  exit(); // Make sure to exit after the redirect
+}
 
 include('express-stk.php');
 

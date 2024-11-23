@@ -1,4 +1,12 @@
 <?php
+session_start();
+if (isset($_SESSION['username']) && isset($_SESSION['expire_time']) && time() < $_SESSION['expire_time']) {
+  // User is already logged in, you can store the username in a variable
+  $username = $_SESSION['username'];
+} else {
+  header("Location: login.php");
+  exit(); // Make sure to exit after the redirect
+}
 /* Database connection settings */
 $host = 'localhost';
 $user = 'root';

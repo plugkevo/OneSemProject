@@ -1,10 +1,11 @@
 <?php 
 session_start();
-if (isset($_SESSION['username']) && isset($_SESSION['expire_time']) && time() < $_SESSION['expire_time'] ) {
-  // User is already logged in, redirect to the new page
-}
-else{
+if (isset($_SESSION['username']) && isset($_SESSION['expire_time']) && time() < $_SESSION['expire_time']) {
+  // User is already logged in, you can store the username in a variable
+  $userName = $_SESSION['username'];
+} else {
   header("Location: admin_login.php");
+  exit(); // Make sure to exit after the redirect
 }
 
 
@@ -67,6 +68,7 @@ else{
     .card-header{
         margin-top: 30px;
     }
+
 </style>
 
 <body >
@@ -75,6 +77,10 @@ else{
    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
+                <div class="wrapper" style="margin-top:80px;">
+                    <h5 style="text-align: center;">Welcome, <?php echo htmlspecialchars($userName); ?>!</h5>
+                    <p style="text-align: center;">You are logged in. Your session will expire in <?php echo ($_SESSION['expire_time'] - time()) / 60; ?> minutes.</p>
+                </div>
                 <div class="card-header bg-dark text-white text-center" style="height: 50px; text-align: center;" >
                     <span class="align-middle" >Admin Panel</span>
                 </div>
@@ -108,11 +114,11 @@ else{
             </div>
             <div class="col-lg-3 ">
                 <div class="card-header bg-dark text-white text-center"style="height: 50px;" >
-                    <span class="align-middle">Others</span>
+                    <span class="align-middle">Enter Goods</span>
                 </div>
                 <div class="card-body">
-                    <span><p>Others </p></span>
-                    <a href="approve_products_services.php">
+                    <span><p>Click to enter goods </p></span>
+                    <a href="enter_goods.php">
                         <button> <i class="fa fa-edit"></i></button>
                     </a>
                 </div>
@@ -120,11 +126,11 @@ else{
             </div>
             <div class="col-lg-3 ">
                 <div class="card-header bg-dark text-white text-center"style="height: 50px;" >
-                    <span class="align-middle">Others</span>
+                    <span class="align-middle">View Goods</span>
                 </div>
                 <div class="card-body   ">
-                    <span><p>Others </p></span>
-                    <a href="approve_products_services.php">
+                    <span><p>Click to view Goods </p></span>
+                    <a href="view_goods.php">
                         <button> <i class="fa fa-edit"></i></button>
                     </a>
                 </div>

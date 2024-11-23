@@ -8,20 +8,21 @@ if (isset($_SESSION['username']) && isset($_SESSION['expire_time']) && time() < 
   exit(); // Make sure to exit after the redirect
 }
 
+
 include('connection.php');
 $result = null;
 
-$search_order_no = ""; // Initialize the search input variable
+$search_goods_no = ""; // Initialize the search input variable
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $search_order_no = $_POST["search_order_no"]; // Get the entered item_no from the form
+    $search_goods_no = $_POST["search_goods_no"]; // Get the entered item_no from the form
 }
 
 // Step 4: Fetch data from the selected table
-$sql = "SELECT * FROM orders";
-if (!empty($search_order_no)) {
+$sql = "SELECT * FROM warehousegoods";
+if (!empty($search_goods_no)) {
     // If a search item_no is provided, add a WHERE clause to filter results
-    $sql .= " WHERE OrderNo LIKE '%$search_order_no%'";
+    $sql .= " WHERE goodNo LIKE '%$search_goods_no%'";
 }
 $result = $conn->query($sql);
 ?>
@@ -48,14 +49,14 @@ $result = $conn->query($sql);
 <body >
     <!-- THIS WILL BE THE HOME PAGE -->
    <?php include('navbar.html')?>
-   <form action="admin_orders.php" method="POST">
+   <form action="view_goods.php" method="POST">
 
         <div class="main">
         <a href="admin_home.php" style="color: black; text-decoration: none;"><i class="fas fa-backward fa-2x"></i></a>
 
             <div class="form-group">
                 <label for="search_item_no">Search by Order Number:</label>
-                <input type="text" class="form-control" id="search_order_no" name="search_order_no" value="<?php echo $search_order_no; ?>" placeholder="Enter order number....">
+                <input type="text" class="form-control" id="search_order_no" name="search_goods_no" value="<?php echo $search_goods_no; ?>" placeholder="Enter order number....">
             </div>
             <button type="submit" style="margin-top: 10px;" class="btn btn-primary">Search</button>
 
@@ -64,10 +65,10 @@ $result = $conn->query($sql);
                 <thead>
                     <tr>
                         <th scope="col">No</th>
-                        <th scpoe ="col">Order Number</th>
-                        <th scope ="col">Amount</th>
-                        <th scope ="col">Phone</th>
-                        <th scope ="col">Payment Date</th>
+                        <th scpoe ="col">Package Number</th>
+                        <th scope ="col">Package Name</th>
+                        <th scope ="col">Warehouse Name</th>
+                        <th scope ="col">Description</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,10 +77,10 @@ $result = $conn->query($sql);
                             <!-- ... (your existing table rows) ... -->
                             <tr>
                         <td><?php echo $fetchrecord['ID']?></td>
-                        <td><?php echo $fetchrecord['OrderNo']?></td>
-                        <td><?php echo $fetchrecord['Amount']?></td>
-                        <td><?php echo $fetchrecord['Phone']?></td>
-                        <td><?php echo $fetchrecord['CreatedAt']?></td>
+                        <td><?php echo $fetchrecord['goodNo']?></td>
+                        <td><?php echo $fetchrecord['goodName']?></td>
+                        <td><?php echo $fetchrecord['storeName']?></td>
+                        <td><?php echo $fetchrecord['description']?></td>
                         
                     </tr>
                         <?php } ?>

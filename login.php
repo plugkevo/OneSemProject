@@ -65,7 +65,7 @@
 </style>
 <body style="">
 
-    <form action="index.php" method="POST">
+    <form action="login.php" method="POST">
     <div class="centered-division">
       <h3 style="color: #ffffff; text-align: center; "> <i> Login Page</i></h3>       
       <br>

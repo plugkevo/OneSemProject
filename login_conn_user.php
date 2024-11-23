@@ -14,11 +14,11 @@ if(isset ($_POST['submit'])) {
   
     if ($result->num_rows == 1) {
       $_SESSION['username'] = $username;
-      $_SESSION['expire_time'] = time() + (20 * 60); // Set session expiration time to 20 minutes from now
+      $_SESSION['expire_time'] = time() + ( 5 * 60); // Set session expiration time to 20 minutes from now
 
       // The username and password are correct, so log the user in
     
-      header("Location: home.php");
+      header("Location: goods.php");
     } else {
       // The username and password are incorrect, so display an error message
       $error = "Invalid username or password";
