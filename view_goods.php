@@ -56,7 +56,7 @@ $result = $conn->query($sql);
 
             <div class="form-group">
                 <label for="search_item_no">Search by Order Number:</label>
-                <input type="text" class="form-control" id="search_order_no" name="search_goods_no" value="<?php echo $search_goods_no; ?>" placeholder="Enter order number....">
+                <input type="number" class="form-control" id="search_order_no" name="search_goods_no" value="<?php echo $search_goods_no; ?>" placeholder="Enter order number....">
             </div>
             <button type="submit" style="margin-top: 10px;" class="btn btn-primary">Search</button>
 

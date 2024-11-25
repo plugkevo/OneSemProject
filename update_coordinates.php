@@ -113,15 +113,15 @@ if (isset($_POST['delete_coordinates_btn'])) {
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="shipIMO" class="label">IMO Number</label>
-                    <input type="text" class="form-control" name="ship_imo" value="<?php echo htmlspecialchars($ship_imo); ?>" placeholder="Enter IMO no...">
+                    <input type="number" class="form-control" name="ship_imo" value="<?php echo htmlspecialchars($ship_imo); ?>" placeholder="Enter IMO no...">
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="latitude" class="label">Latitude</label>
-                    <input type="text" class="form-control" name="latitude" value="<?php echo htmlspecialchars($latitude); ?>" placeholder="Enter latitude...">
+                    <input type="number" class="form-control" name="latitude" value="<?php echo htmlspecialchars($latitude); ?>" placeholder="Enter latitude...">
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="longitude" class="label">Longitude</label>
-                    <input type="text" class="form-control" name="longitude" value="<?php echo htmlspecialchars($longitude); ?>" placeholder="Enter longitude...">
+                    <input type="number" class="form-control" name="longitude" value="<?php echo htmlspecialchars($longitude); ?>" placeholder="Enter longitude...">
                 </div>
                 
                 <div class="col-lg-6 mb-3">

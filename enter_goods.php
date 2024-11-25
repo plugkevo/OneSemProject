@@ -24,15 +24,30 @@ if (isset($_POST['enter_goods_btn'])) {
     $storeName = $_POST['storeName'];
     $description = $_POST['description'];
 
-    // Use prepared statements to prevent SQL injection
-    $stmt = $conn->prepare("INSERT INTO warehousegoods(goodNo, goodName, storeName, description) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $goodNo, $goodName, $storeName, $description);
+    // Check if the goodNo already exists
+    $stmt = $conn->prepare("SELECT * FROM warehousegoods WHERE goodNo = ?");
+    $stmt->bind_param("s", $goodNo);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    // Execute the statement
-    if ($stmt->execute()) {
-        $response = "Data submitted successfully";
+    if ($result->num_rows > 0) {
+        $error = "Error: The goodNo already exists. Please enter a unique goodNo.";
     } else {
-        $error = "Not submitted: " . $stmt->error;
+        // Use prepared statements to prevent SQL injection
+        $stmt = $conn->prepare("INSERT INTO warehousegoods(goodNo, goodName, storeName, description) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $goodNo, $goodName, $storeName, $description);
+
+        // Execute the statement
+        if ($stmt->execute()) {
+            $response = "Data submitted successfully";
+            // Clear the form fields after submission
+            $goodNo = '';
+            $goodName = '';
+            $storeName = '';
+            $description = '';
+        } else {
+            $error = "Not submitted: " . $stmt->error;
+        }
     }
 
     // Close the statement
@@ -74,6 +89,10 @@ if (isset($_POST['update_goods_btn'])) {
 
     if ($stmt->execute()) {
         $response = "Data updated successfully";
+        $goodNo = '';
+        $goodName = '';
+        $storeName = '';
+        $description = '';
     } else {
         $error = "Update failed: " . $stmt->error;
     }
@@ -133,7 +152,7 @@ $conn->close();
             <div class="row">
                 <div class="col-lg-6 mb-3">
                     <label for="packageName" class="label">Package Number</label>
-                    <input type="text" class="form-control" name="goodNo" value="<?php echo ?>" placeholder="Enter package number...">
+                    <input type="text" class="form-control" name="goodNo" value="<?php echo htmlspecialchars($goodNo); ?>" placeholder="Enter package number...">
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="Package Name" class="label">Package Name</label>

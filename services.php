@@ -85,6 +85,13 @@
         <div class="row">
             <div class="service">
                 <a href="goods.php" style="color:black; text-decoration:none;">
+                    <h2>International Shipping</h2>
+                    <p>We offer shipping outside the country and also globally. It enables new possibilities and 
+                        better services.
+                    </p>
+                </a>
+            </div>
+            <div class="service">
                     <h2>Customer Delivery</h2>
                     <p>We deliver and transport goods for our customers even when they order their goods through the online mode. The delivery 
                         process is typically managed by our company which picks up the package from the retailer and transports it to the customer's address.
@@ -103,12 +110,7 @@
                     needs to be a marketing orientation, which fosters the marketing concepts.
                 </p>
             </div>
-            <div class="service">
-                <h2>International Shipping</h2>
-                <p>We offer shipping outside the country and also globally. It enables new possibilities and 
-                    better services.
-                </p>
-            </div>
+            
         </div>
 
         <!-- Display session details -->

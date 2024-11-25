@@ -105,11 +105,10 @@
                 <div class="input-group">
                     <label for="last-name">Subject</label>
                     <input type="text" name="subject" id="subject" placeholder="Subject">
-                   
                 </div>
-                <div class="input-group">
+                <div class="">
                     <label for="last-name">Phone Number</label>
-                    <input type="text" name="phoneNo" id="subject" placeholder="+2547......">
+                    <input type="number" class="form-control" name="phoneNo" id="subject" placeholder="+2547......">
                    
                 </div>
 
