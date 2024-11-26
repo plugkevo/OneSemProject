@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["confirm_Payment"])) {
     require_once 'sms.php';
     $livesms = new SMS();
     @$phone = $phone_number;
-    @$text = "Your Payment has been received. More updates will follow.";
+    @$text = "Your Payment has been received for Order ID: " . htmlspecialchars($orderNo) . ". More updates will follow.";
     @$result = $livesms->send($phone, $text);
     
     // Handle SMS sending result

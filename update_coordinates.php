@@ -117,11 +117,11 @@ if (isset($_POST['delete_coordinates_btn'])) {
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="latitude" class="label">Latitude</label>
-                    <input type="number" class="form-control" name="latitude" value="<?php echo htmlspecialchars($latitude); ?>" placeholder="Enter latitude...">
+                    <input type="text" class="form-control" name="latitude" value="<?php echo htmlspecialchars($latitude); ?>" placeholder="Enter latitude...">
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="longitude" class="label">Longitude</label>
-                    <input type="number" class="form-control" name="longitude" value="<?php echo htmlspecialchars($longitude); ?>" placeholder="Enter longitude...">
+                    <input type="text" class="form-control" name="longitude" value="<?php echo htmlspecialchars($longitude); ?>" placeholder="Enter longitude...">
                 </div>
                 
                 <div class="col-lg-6 mb-3">

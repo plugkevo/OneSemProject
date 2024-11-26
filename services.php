@@ -77,7 +77,7 @@
                     </ul>
                 </li>                     
             </ul>           
-        </ </div>
+        </div>
     </nav>
 
     <div class="container">
@@ -92,6 +92,7 @@
                 </a>
             </div>
             <div class="service">
+                <a href="delivery.php" style="color:black; text-decoration:none;">
                     <h2>Customer Delivery</h2>
                     <p>We deliver and transport goods for our customers even when they order their goods through the online mode. The delivery 
                         process is typically managed by our company which picks up the package from the retailer and transports it to the customer's address.
@@ -113,11 +114,7 @@
             
         </div>
 
-        <!-- Display session details -->
-        <div class="wrapper">
-            <h2 style="text-align: center;">Welcome, <?php echo htmlspecialchars($username); ?>!</h2>
-            <p style="text-align: center;">You are logged in. Your session will expire in <?php echo ($_SESSION['expire_time'] - time()) / 60; ?> minutes.</p>
-        </div>
+       
     </div>
 </body>
 </html>

@@ -1,13 +1,5 @@
 <?php
-session_start();
-if (isset($_SESSION['username']) && isset($_SESSION['expire_time']) && time() < $_SESSION['expire_time'] ) {
-  // User is already logged in, redirect to the new page
-  
-}
-else{
-header("Location: login.php");
-exit();
-}
+
 
 
     
@@ -39,7 +31,7 @@ exit();
          {
           $response = "User created successfully";
           $_SESSION['signup_completed'] = true; // Set session variable indicating sign-up completion
-           header("Location: home.php");
+           header("Location: login.php");
         } 
         else{
             $error = "not created";
@@ -50,7 +42,7 @@ exit();
 
   // If the sign-up is already completed, redirect to the home page
 if (isset($_SESSION['signup_completed']) && $_SESSION['signup_completed'] === true) {
-    header("Location: home.php");
+    header("Location: login.php");
     exit; // Terminate script execution to prevent further processing
 }
   ?>

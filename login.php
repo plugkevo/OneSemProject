@@ -66,6 +66,15 @@
 <body style="">
 
     <form action="login.php" method="POST">
+    <?php
+      if($response)
+      {
+        include('response.php');
+      }
+      if($error)
+        {
+          include('error.php');
+        }?>
     <div class="centered-division">
       <h3 style="color: #ffffff; text-align: center; "> <i> Login Page</i></h3>       
       <br>

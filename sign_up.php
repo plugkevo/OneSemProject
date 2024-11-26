@@ -95,7 +95,7 @@ include('sign_up_conn.php')
             <br>
             <button class="button"   type="submit"  name="submit"> <b>Login</b> </button  >
             <br>
-            <p>Already have an account?</p><b><a href="index.php" style="color: white; text-decoration: none;">LOGIN</a></b>
+            <p>Already have an account?</p><b><a href="login.php" style="color: white; text-decoration: none;">LOGIN</a></b>
 
        
     
